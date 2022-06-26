@@ -8,11 +8,24 @@ width:30rem ;
 height: 23rem ;
 padding:10px ;
 border-radius:10px ;
-
 display:flex ;
 flex-direction:column ;
-position:fixed ;
-right:0.5rem ;
+margin-top:2rem ;
+
+
+
+label{
+    text-align:left ;
+    margin-left:0;
+}
+
+div.dados-style{
+
+    display:grid ;
+   
+    margin-top:1rem ;
+    
+}
 
 .form-style{
     padding:10px ;
@@ -22,6 +35,9 @@ right:0.5rem ;
     outline:none ;
     margin-bottom:1rem ;
     background-color:#EDDED4 ;
+    width:25rem ;
+    
+   
 }
 button{
     padding:10px;

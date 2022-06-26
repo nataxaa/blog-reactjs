@@ -3,7 +3,13 @@ import styled from 'styled-components'
 
 
 
+
 export const GlobalStyle = createGlobalStyle`
+
+*{
+    margin:0 auto;
+
+}
 
 :root{
     --background-post: #F9F4F1; 
@@ -15,11 +21,22 @@ body{
     color:black ;    
 }
 
+.bb{
+    top:4rem ;
+    position:relative ;
+    text-decoration:none ;
+    color:white ;
+    background-color:red ;
+    padding:10px ;
+    border-radius:10px ;
+}
+
+
 `
 export const Container = styled.div`
     display:grid ;
-    grid-template-columns: 3fr 1fr ;
- 
+    grid-template-columns: 1fr 1fr ;
     
+ 
+`
 
-` 

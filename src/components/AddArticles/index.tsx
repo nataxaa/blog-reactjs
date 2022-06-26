@@ -70,6 +70,8 @@ export function AddArticles(){
                 description: formData.description,
                 imageUrl: url,
                 createdAt: Timestamp.now().toDate(),
+                createdBy:user?.displayName,
+                userId:user?.uid,
                 likes:[],
                 comments:[]
               })
@@ -89,6 +91,8 @@ export function AddArticles(){
     <Container>
         <h1>Criação da Postagem</h1>
 
+      <div className="dados-style">
+
         <label htmlFor="">Titulo</label>
         <input 
         type="text"
@@ -104,7 +108,7 @@ export function AddArticles(){
           className="form-style"
           value={formData.description}
           onChange={(e)=> handlechange(e)}
-         />
+          />
 
          <label htmlFor="">Image</label>
          <input
@@ -114,8 +118,19 @@ export function AddArticles(){
           className="form-style"
           onChange={(e)=> handleImagechange(e)}
           />
-
+          {progress === 0 ? null : (
+            <div className="progress">
+              <div
+                style={{ width: `${progress}%` }}
+              >
+                {`uploading image ${progress}%`}
+              </div>
+              
+            </div>
+          )}
           <button onClick={handlePublish}>Publicar</button>
+        
+          </div>
 
     </Container>
     )

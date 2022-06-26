@@ -2,14 +2,18 @@ import { orderBy, collection, query, onSnapshot, doc, deleteDoc } from "firebase
 import { deleteObject, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { db, storage } from "../../service/firebase";
+import { auth, db, storage } from "../../service/firebase";
 import { Container, Divider, Postuser } from "./style";
 import {FiTrash2} from 'react-icons/fi'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { LikeArticle } from "../likeArticles";
+import { Link } from "react-router-dom";
 
 
 
 export function Articles(){
     const [articles, setArticles] = useState([])
+    const [user] = useAuthState(auth)
 
     async function handleDeletePost({id, imageUrl}: any){
         if(window.confirm("Tem certeza que voce quer excluir essa postagem ?")){
@@ -44,17 +48,22 @@ export function Articles(){
             {articles.length == 0 ? (
                 <span>Sem postagens...</span>
             ):(
-                articles.map(({id, title, description, imageUrl, createdAt})=>(
+                articles.map(({id, title, description, imageUrl, createdAt, likes})=>(
                     <div className="post" key={id}>
                         <Postuser>
                             <div className="post-grid">
+                                {user && (
+                                    <button><FiTrash2 onClick={()=>handleDeletePost({id, imageUrl})}/></button>
+                                )}
+                                <span className="like-style"><LikeArticle id={id} likes={likes}/></span>
+                                <Link to={`/ViewArticle/${id}`}>
                                 <img src={imageUrl} alt="oii" />
+                                </Link>
                                 <span><h1>{title}</h1></span>
                                 <span>{description}</span>
-                                <button><FiTrash2 onClick={()=>handleDeletePost({id, imageUrl})}/></button>
                             </div>
                         </Postuser>
-                            <Divider/>
+                            
 
                     </div>
                 ))
