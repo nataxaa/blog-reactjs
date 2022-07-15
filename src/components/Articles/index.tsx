@@ -8,6 +8,7 @@ import {FiTrash2} from 'react-icons/fi'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { LikeArticle } from "../likeArticles";
 import { Link } from "react-router-dom";
+import {FiFileText} from 'react-icons/fi'
 
 
 
@@ -45,16 +46,18 @@ export function Articles(){
 
     return(
         <Container>
+            <div>
+
             {articles.length == 0 ? (
                 <span>Sem postagens...</span>
-            ):(
-                articles.map(({id, title, description, imageUrl, createdAt, likes})=>(
-                    <div className="post" key={id}>
+                ):(
+                    articles.map(({id, title, description, imageUrl, createdAt, likes})=>(
+                        <div className="post" key={id}>
                         <Postuser>
                             <div className="post-grid">
                                 {user && (
                                     <button><FiTrash2 onClick={()=>handleDeletePost({id, imageUrl})}/></button>
-                                )}
+                                    )}
                                 <span className="like-style"><LikeArticle id={id} likes={likes}/></span>
                                 <Link to={`/ViewArticle/${id}`}>
                                 <img src={imageUrl} alt="oii" />
@@ -63,13 +66,17 @@ export function Articles(){
                                 <span>{description}</span>
                             </div>
                         </Postuser>
-                            
-
+                            <Divider/>
                     </div>
                 ))
-            )
+            )}
+                </div>
+            
+            <div className="style-myblog">
+                <span className="icon-file"><FiFileText/></span>
+                <h1 className="title">My Blog</h1>
+            </div>
 
-            }
         </Container>
     )
 }

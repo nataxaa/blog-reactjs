@@ -16,19 +16,21 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body{
-    background-color:#0A0A0A ;
+    background-color:#251825 ;
     font-family:sans-serif ;
     color:black ;    
 }
 
 .bb{
-    top:4rem ;
+    top:5rem ;
+    right:-70rem ;
     position:relative ;
     text-decoration:none ;
     color:white ;
     background-color:red ;
     padding:10px ;
     border-radius:10px ;
+    z-index:-1 ;
 }
 
 

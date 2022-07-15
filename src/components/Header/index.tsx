@@ -9,18 +9,20 @@ export function Header(){
     console.log(user) 
     return(
     <Container>
-        <div className="header-style">
-        <h1>Meu blog</h1>
+        <header>
+        <h1>My blog</h1>
+        <div className="link-style">
         <Link className="link-home" to="/">Home</Link>
         <Link className="link-home" to="/Register">Registrar</Link>
         <Link className="link-home" to="/Login">Login</Link>
+        </div>
         {user &&(
                 <div>
                     <span>Usuario {user.displayName }</span>
                     <button onClick={()=>{signOut(auth)}}>Logout</button>
                 </div>
         )}
-        </div>
+        </header>
         
     </Container>
 
